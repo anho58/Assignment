@@ -9,11 +9,12 @@ import (
 	"syscall"
 	"time"
 
-	"part1_golang/api_gateway/internal/application"
-	domain "part1_golang/api_gateway/internal/domain/book"
-	httpHanlder "part1_golang/api_gateway/internal/infrastructure/http"
-	memory "part1_golang/api_gateway/internal/infrastructure/memory"
-	_ "part1_golang/docs"
+	_ "github.com/anho58/Assignment/Part1_Golang/api_gateway/docs"
+	domain "github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/domain/book"
+	httpHanlder "github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/infrastructure/http"
+	memory "github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/infrastructure/memory"
+
+	"github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/application"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
