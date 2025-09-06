@@ -1,0 +1,138 @@
+basePath: /api/v1
+definitions:
+  application.CreateBookDTO:
+    properties:
+      author:
+        maxLength: 120
+        minLength: 1
+        type: string
+      description:
+        maxLength: 2000
+        minLength: 1
+        type: string
+      price:
+        maximum: 100000
+        minimum: 0
+        type: number
+      title:
+        maxLength: 200
+        minLength: 1
+        type: string
+    required:
+    - author
+    - title
+    type: object
+  book.Book:
+    properties:
+      author:
+        type: string
+      createdAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      isDelete:
+        type: boolean
+      isSale:
+        type: boolean
+      price:
+        type: number
+      title:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for managing books.
+  title: Book API
+  version: "1.0"
+paths:
+  /books:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/book.Book'
+            type: array
+      summary: List all books
+      tags:
+      - books
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Book info
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/application.CreateBookDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/book.Book'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create a new book
+      tags:
+      - books
+  /books/{id}:
+    delete:
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete a book by ID
+      tags:
+      - books
+    get:
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/book.Book'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get a book by ID
+      tags:
+      - books
+swagger: "2.0"
