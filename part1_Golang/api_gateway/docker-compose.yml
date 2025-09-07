@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api_gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_gateway-api
+    ports:
+      - "8080:8080"      # Map host port 8080 to container port 8080
+    restart: unless-stopped
+    environment:
+      # Example environment variables; add yours if needed
+      GO_ENV: "production"

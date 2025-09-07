@@ -2,8 +2,7 @@ How to run
 
 part1_Golang
 - cd to part1_Golang/api_gateway
-- go mod tidy
-- go run ./cmd/api/main.go
+- docker compose up --build
 - can use swagger to action: http://localhost:8080/swagger/index.html
 
 part2_Concurrency
