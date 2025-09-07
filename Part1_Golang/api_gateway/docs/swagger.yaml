@@ -1,0 +1,83 @@
+basePath: /api/v1
+definitions:
+  application.CreateBookDTO:
+    properties:
+      author:
+        maxLength: 120
+        minLength: 1
+        type: string
+      description:
+        maxLength: 2000
+        minLength: 1
+        type: string
+      price:
+        maximum: 100000
+        minimum: 0
+        type: number
+      title:
+        maxLength: 200
+        minLength: 1
+        type: string
+    required:
+    - author
+    - title
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for managing books.
+  title: Book API
+  version: "1.0"
+paths:
+  /books:
+    get:
+      produces:
+      - application/json
+      responses: {}
+      summary: List all books
+      tags:
+      - books
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Book info
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/application.CreateBookDTO'
+      produces:
+      - application/json
+      responses: {}
+      summary: Create a new book
+      tags:
+      - books
+  /books/{id}:
+    delete:
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a book by ID
+      tags:
+      - books
+    get:
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get a book by ID
+      tags:
+      - books
+swagger: "2.0"

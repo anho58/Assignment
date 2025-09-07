@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/domain/book"
+	"github.com/anho58/Assignment/part1_Golang/api_gateway/internal/domain/book"
 
 	"github.com/go-playground/validator"
 	"github.com/google/uuid"
@@ -18,7 +18,7 @@ var (
 type CreateBookDTO struct {
 	Title       string  `json:"title" validate:"required,min=1,max=200"`
 	Author      string  `json:"author" validate:"required,min=1,max=120"`
-	Description string  `json:"description" validate:"min=1,max=2000"`
+	Description string  `json:"description" validate:"min=0,max=2000"`
 	Price       float64 `json:"price" validate:"gte=0,lte=100000"`
 }
 

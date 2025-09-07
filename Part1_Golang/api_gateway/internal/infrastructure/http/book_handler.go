@@ -3,7 +3,7 @@ package http
 import (
 	"net/http"
 
-	application "github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/application"
+	application "github.com/anho58/Assignment/part1_Golang/api_gateway/internal/application"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"

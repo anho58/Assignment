@@ -5,7 +5,7 @@ import (
 	"errors"
 	"sync"
 
-	domain "github.com/anho58/Assignment/Part1_Golang/api_gateway/internal/domain/book"
+	domain "github.com/anho58/Assignment/part1_Golang/api_gateway/internal/domain/book"
 
 	"github.com/google/uuid"
 )
