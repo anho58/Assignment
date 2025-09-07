@@ -22,22 +22,21 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title Book API
+// @title Book Store API
 // @version 1.0
 // @description This is a sample server for managing books.
 // @host localhost:8080
 // @BasePath /api/v1
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 func main() {
 	repo := memory.NewBookRepo()
 	_, _ = repo.Add(context.Background(), domain.New(uuid.Nil, "Book 1", "Book 1 Author", "Description Test", 50))
 	_, _ = repo.Add(context.Background(), domain.New(uuid.Nil, "Book 2", "Book 1 Author", "", 50))
 
 	service := application.NewBookService(repo)
-
-	// transport layer
 	handler := httpHanlder.NewBookHandler(service)
-
-	// gin setup
 	router := gin.Default()
 	api := router.Group("/api/v1")
 	{
@@ -45,7 +44,6 @@ func main() {
 		handler.RegisterRoutes(api)
 	}
 
-	// Swagger endpoint
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	srv := &http.Server{

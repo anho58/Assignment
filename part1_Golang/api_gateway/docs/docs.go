@@ -18,6 +18,11 @@ const docTemplate = `{
     "paths": {
         "/books": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -28,6 +33,11 @@ const docTemplate = `{
                 "responses": {}
             },
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "consumes": [
                     "application/json"
                 ],
@@ -37,7 +47,7 @@ const docTemplate = `{
                 "tags": [
                     "books"
                 ],
-                "summary": "Create a new book",
+                "summary": "add a new book",
                 "parameters": [
                     {
                         "description": "Book info",
@@ -54,6 +64,11 @@ const docTemplate = `{
         },
         "/books/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -73,6 +88,11 @@ const docTemplate = `{
                 "responses": {}
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -109,7 +129,7 @@ const docTemplate = `{
                 "description": {
                     "type": "string",
                     "maxLength": 2000,
-                    "minLength": 1
+                    "minLength": 0
                 },
                 "price": {
                     "type": "number",
@@ -123,6 +143,13 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
@@ -132,7 +159,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8080",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "Book API",
+	Title:            "Book Store API",
 	Description:      "This is a sample server for managing books.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

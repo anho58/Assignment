@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug API",
+        "type": "go",
+        "request": "launch",
+        "mode": "auto",
+        "program": "${workspaceFolder}/cmd/api",
+        "args": [],
+        "env": {
+          "JWT_SECRET": "aP9x!7#sQ2vL8zY3mN1bR6kT0wE5hU4j"
+        }
+      }
+    ]
+  }
+  
